@@ -1,0 +1,60 @@
+<html>
+	<head>
+		<title>Food App by Kamal Sir</title>
+	</head>
+	<style>
+		*{font-size:50px;}
+		body{background-color:azure;}
+		input[type="radio"]{width:5%;height:0.6em}
+	</style>
+	<body>
+	<center>
+		<h1>Food App</h1>
+		<form onsubmit="show()">
+		<input type="text" id="name" placeholder="Enter Name">
+		<br><br>
+		<input type="radio" id="ni" name="f">North Indian
+		<input type="radio" id="si" name="f" checked="true">South Indian
+		<input type="radio" id="ff" name="f">Fast Food
+		<br><br>
+		<input type="submit">
+		</form>
+		<h2 id="msg">
+		<script>
+			function show()
+			{
+				event.preventDefault();
+				let name=document.getElementById("name");
+				let ni=document.getElementById("ni");
+				let si=document.getElementById("si");
+				let ff=document.getElementById("ff");
+				let msg=document.getElementById("msg");
+
+				if(name.value==="")
+				{
+						alert("Please enter name");
+						msg.innerHTML="";
+						name.focus();
+						return;
+				}
+				if(!name.value.match("^[A-Za-z]{2,}$"))
+				{
+						alert("Name should contain only alphabets");
+						msg.innerHTML="";
+						name.focus();
+						return;
+				}
+
+				let choice="";
+				if(ni.checked)  	choice="North Indian";
+				else if(si.checked)  choice="South Indian";
+				else				choice="Fast Food";
+				
+				let ans="name="+name.value+"  choice="+choice;
+				msg.innerHTML=ans;
+
+			}
+		</script>
+	</center>
+	</body>
+</html>
